@@ -5,12 +5,10 @@ import Main from "../../Containers/Main/Main";
 
 const App = () => {
   return (
-    <>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/main" component={Main} />
-      </Switch>
-    </>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/main" component={Main} />
+    </Switch>
   );
 };
 
