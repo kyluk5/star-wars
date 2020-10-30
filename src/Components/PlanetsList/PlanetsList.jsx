@@ -44,7 +44,7 @@ const PlanetsList = () => {
         {planets.map((planet) => (
           <li key={planet.name} className={styles.planets__list_item}>
             <Link
-              to={`/main/${planet.name}`}
+              to={`/main/${planets.indexOf(planet) + 1}`}
               className={styles.planets__list_link}
             >
               <img
@@ -53,13 +53,15 @@ const PlanetsList = () => {
                 className={styles.planets__list_item_planet}
               />
               <div className={styles.info_wrapper}>
-                <span className={styles.info}>{`Name : ${planet.name}`}</span>
                 <span
                   className={styles.info}
-                >{`Climate : ${planet.climate}`}</span>
+                >{`Название : ${planet.name}`}</span>
                 <span
                   className={styles.info}
-                >{`Population : ${planet.population}`}</span>
+                >{`Климат : ${planet.climate}`}</span>
+                <span
+                  className={styles.info}
+                >{`Население : ${planet.population}`}</span>
               </div>
               <div className={styles.custom_hover}></div>
             </Link>
