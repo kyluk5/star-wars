@@ -5,11 +5,14 @@
 .planets__list_item {
     position: relative;
     cursor: pointer;
-    width: max-content;
-    display: flex;
+    width: 280px;
     margin: 0 auto 20px;
     z-index: 1;
 
+}
+
+.planets__list_link {
+    display: flex;
 }
 
 .custom_hover {
@@ -27,7 +30,7 @@
     transition: color, opacity 250ms linear;
 }
 
-.planet {
+.planets__list_item_planet {
     width: 140px;
     height: 140px;
 }
@@ -44,9 +47,16 @@
     color: white;
 }
 
-@media(min-width:1280px) {
+@media(min-width:768px) {
     .planets__list {
+        width: 680px;
         display: flex;
         flex-wrap: wrap;
+    }
+}
+
+@media(min-width:1280px) {
+    .planets__list {
+        width: 980px;
     }
 }

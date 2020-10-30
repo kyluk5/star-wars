@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlanets } from "../../redux/operations/planetsOperation";
+import { Link } from "react-router-dom";
 import styles from "./PlanetsList.module.css";
 
 import planet_1 from "../../images/planets/planet_1.png";
@@ -10,7 +11,6 @@ import planet_4 from "../../images/planets/planet_4.png";
 import planet_5 from "../../images/planets/planet_5.png";
 import planet_6 from "../../images/planets/planet_6.png";
 import planet_7 from "../../images/planets/planet_7.png";
-import { Link } from "react-router-dom";
 
 const randomPlanet = () => {
   const planets = [
@@ -22,12 +22,13 @@ const randomPlanet = () => {
     planet_6,
     planet_7,
   ];
-  const num = Math.floor(Math.random() * 6);
+  const num = Math.floor(Math.random() * 7);
   return planets[num];
 };
 
 const PlanetsList = () => {
   const dispatch = useDispatch();
+  const planets = useSelector((state) => state.planets);
 
   const getAllPlanets = useCallback(() => {
     dispatch(getPlanets());
@@ -37,18 +38,19 @@ const PlanetsList = () => {
     getAllPlanets();
   }, [getAllPlanets]);
 
-  const planets = useSelector((state) => state.planets);
-
   return (
     <div className={styles.wrapper}>
       <ul className={styles.planets__list}>
         {planets.map((planet) => (
-          <Link to={`/main/${planet.name}`}>
-            <li key={planet.name} className={styles.planets__list_item}>
+          <li key={planet.name} className={styles.planets__list_item}>
+            <Link
+              to={`/main/${planet.name}`}
+              className={styles.planets__list_link}
+            >
               <img
                 src={randomPlanet()}
                 alt="planet"
-                className={styles.planet}
+                className={styles.planets__list_item_planet}
               />
               <div className={styles.info_wrapper}>
                 <span className={styles.info}>{`Name : ${planet.name}`}</span>
@@ -60,8 +62,8 @@ const PlanetsList = () => {
                 >{`Population : ${planet.population}`}</span>
               </div>
               <div className={styles.custom_hover}></div>
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
