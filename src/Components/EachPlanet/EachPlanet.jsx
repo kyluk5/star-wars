@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getCurrentPlanet } from "../../redux/operations/planetsOperation";
+import Residents from "../Residents/Residents";
 import styles from "./EachPlanet.module.css";
 
 const EachPlanet = () => {
@@ -39,7 +40,7 @@ const EachPlanet = () => {
         className={styles.planet__info_item}
       >{`Население : ${currentPlanet.population}`}</li>
       <li className={styles.planet__info_item}>
-        {/* <Link to={`/main/:planet/people`}></Link>Известные жители :{" "} */}
+        Известные жители : <Residents residents={currentPlanet.residents} />
       </li>
     </ul>
   );
