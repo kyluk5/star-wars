@@ -1,15 +1,23 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getPlanets } from "../../redux/operations/planetsOperation";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import styles from "./Pagination.module.css";
 
 const Pagination = () => {
-  const dispatch = useDispatch();
+  const history = useHistory();
+
   const prev = useSelector((state) => state.prevPage);
   const next = useSelector((state) => state.nextPage);
 
   const searchPage = ({ target: { value } }) => {
-    dispatch(getPlanets(value));
+    if (value !== "") {
+      history.push({
+        pathname: value.split("http://swapi.dev/api/planets/?")[1],
+      });
+    } else {
+      alert("Cледующей страницы планет нет :(");
+      return;
+    }
   };
 
   return (

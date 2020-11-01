@@ -10,8 +10,8 @@ const App = () => {
     <div className={styles.background}>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/main" component={Main} />
-        <Route exact path="/main/:planet" component={EachPlanet} />
+        <Route path="/:page/:planet" component={EachPlanet} />
+        <Route path="/:page" component={Main} />
       </Switch>
     </div>
   );

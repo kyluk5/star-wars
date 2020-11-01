@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./Start.module.css";
 
 import logo from "../../images/logo.png";
@@ -9,11 +9,11 @@ const Start = () => {
   return (
     <div className={styles.wrapper}>
       <img src={logo} alt="logo star wars" />
-      <Link to="/main/">
+      <NavLink to="/page=1">
         <button className={styles.start}>
           <img src={folder} alt="folder" />
         </button>
-      </Link>
+      </NavLink>
     </div>
   );
 };

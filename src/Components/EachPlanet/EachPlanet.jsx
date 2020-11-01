@@ -11,7 +11,7 @@ const EachPlanet = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const planetNum = history.location.pathname.split("/main/")[1];
+  const planetNum = history.location.pathname.split("/main/:page/")[1];
   const currentPlanet = useSelector((state) => state.currentPlanet);
 
   useEffect(() => {
