@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { getCurrentPlanet } from "../../redux/operations/planetsOperation";
 import Residents from "../Residents/Residents";
 import styles from "./EachPlanet.module.css";
@@ -8,15 +8,15 @@ import styles from "./EachPlanet.module.css";
 import earth from "../../images/planets/earth.png";
 
 const EachPlanet = () => {
-  const history = useHistory();
+  const location = useLocation();
   const dispatch = useDispatch();
 
-  const planetNum = history.location.pathname.split("/main/:page/")[1];
+  const planetNum = location.pathname.substr(-2);
   const currentPlanet = useSelector((state) => state.currentPlanet);
 
   useEffect(() => {
     dispatch(getCurrentPlanet(planetNum));
-  }, [dispatch, planetNum]);
+  }, [dispatch]);
 
   return (
     <>
