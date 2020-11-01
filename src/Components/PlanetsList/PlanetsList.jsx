@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlanets } from "../../redux/operations/planetsOperation";
 import { Link } from "react-router-dom";
@@ -10,21 +10,21 @@ const PlanetsList = () => {
   const dispatch = useDispatch();
   const planets = useSelector((state) => state.planets);
 
-  const getAllPlanets = useCallback(() => {
+  useEffect(() => {
     dispatch(getPlanets());
   }, [dispatch]);
 
-  useEffect(() => {
-    getAllPlanets();
-  }, [getAllPlanets]);
+  const planetNumber = (planet) => {
+    return planet.url.split("http://swapi.dev/api/planets/")[1].split("/")[0];
+  };
 
   return (
-    <div className={styles.wrapper}>
+    <>
       <ul className={styles.planets__list}>
         {planets.map((planet) => (
           <li key={planet.name} className={styles.planets__list_item}>
             <Link
-              to={`/main/${planets.indexOf(planet) + 1}`}
+              to={`/main/${planetNumber(planet)}`}
               className={styles.planets__list_link}
             >
               <img
@@ -48,7 +48,7 @@ const PlanetsList = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 

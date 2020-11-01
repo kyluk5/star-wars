@@ -9,7 +9,7 @@ const Start = () => {
   return (
     <div className={styles.wrapper}>
       <img src={logo} alt="logo star wars" />
-      <Link to="/main">
+      <Link to="/main/">
         <button className={styles.start}>
           <img src={folder} alt="folder" />
         </button>
