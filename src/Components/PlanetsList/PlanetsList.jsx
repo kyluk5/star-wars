@@ -4,27 +4,7 @@ import { getPlanets } from "../../redux/operations/planetsOperation";
 import { Link } from "react-router-dom";
 import styles from "./PlanetsList.module.css";
 
-import planet_1 from "../../images/planets/planet_1.png";
-import planet_2 from "../../images/planets/planet_2.png";
-import planet_3 from "../../images/planets/planet_3.png";
-import planet_4 from "../../images/planets/planet_4.png";
-import planet_5 from "../../images/planets/planet_5.png";
-import planet_6 from "../../images/planets/planet_6.png";
-import planet_7 from "../../images/planets/planet_7.png";
-
-const randomPlanet = () => {
-  const planets = [
-    planet_1,
-    planet_2,
-    planet_3,
-    planet_4,
-    planet_5,
-    planet_6,
-    planet_7,
-  ];
-  const num = Math.floor(Math.random() * 7);
-  return planets[num];
-};
+import earth from "../../images/planets/earth.png";
 
 const PlanetsList = () => {
   const dispatch = useDispatch();
@@ -48,7 +28,7 @@ const PlanetsList = () => {
               className={styles.planets__list_link}
             >
               <img
-                src={randomPlanet()}
+                src={earth}
                 alt="planet"
                 className={styles.planets__list_item_planet}
               />

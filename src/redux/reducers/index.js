@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-import { planets, currentPlanet } from "../reducers/planetsReducer";
+import { planets, currentPlanet, residents } from "../reducers/planetsReducer";
 
 const rootReducer = combineReducers({
   planets,
   currentPlanet,
+  residents,
 });
 
 export default rootReducer;

@@ -1,5 +1,10 @@
 import axios from "axios";
-import { setCurrentPlanet, setPlanets } from "../actions/planetsActions";
+import {
+  getResidents,
+  resetResidents,
+  setCurrentPlanet,
+  setPlanets,
+} from "../actions/planetsActions";
 axios.defaults.baseURL = "https://swapi.dev/api";
 
 export const getPlanets = () => async (dispatch) => {
@@ -15,7 +20,11 @@ export const getPlanets = () => async (dispatch) => {
 
 export const getCurrentPlanet = (num) => async (dispatch) => {
   try {
+    dispatch(resetResidents());
     const { data } = await axios(`/planets/${num}/`);
+    data.residents.map((item) =>
+      axios(item).then(({ data }) => dispatch(getResidents(data)))
+    );
     dispatch(setCurrentPlanet(data));
   } catch (error) {
     console.log(error);
