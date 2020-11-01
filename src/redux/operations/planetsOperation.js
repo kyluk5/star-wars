@@ -11,7 +11,10 @@ axios.defaults.baseURL = "https://swapi.dev/api";
 
 export const getPlanets = (page) => async (dispatch) => {
   try {
-    if (page) {
+    if (page === "") {
+      alert("Cледующей страницы планет нет :(");
+      return;
+    } else if (page) {
       const { data } = await axios(page);
       dispatch(setPlanets(data.results));
       dispatch(setPrevPage(data.previous));

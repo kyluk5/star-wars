@@ -1,7 +1,7 @@
 .pagination_prev {
     position: absolute;
     left: 15%;
-    bottom: 15%;
+    bottom: 1%;
     width: 100px;
     height: 30px;
     color: white;
@@ -19,7 +19,7 @@
 .pagination_next {
     position: absolute;
     right: 15%;
-    bottom: 15%;
+    bottom: 1%;
     width: 100px;
     height: 30px;
     color: white;
@@ -32,4 +32,24 @@
 
 .pagination_next:hover {
     background-color: turquoise;
+}
+
+@media(min-width: 768px) {
+    .pagination_prev {
+        bottom: 6%;
+    }
+
+    .pagination_next {
+        bottom: 6%;
+    }
+}
+
+@media(min-width: 1280px) {
+    .pagination_prev {
+        bottom: 15%;
+    }
+
+    .pagination_next {
+        bottom: 15%;
+    }
 }
