@@ -1,22 +1,29 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getCurrentPlanet } from "../../redux/operations/planetsOperation";
 import Residents from "../Residents/Residents";
 import styles from "./EachPlanet.module.css";
 
 import earth from "../../images/planets/earth.png";
+import arrow from "../../images/back.png";
 
 const EachPlanet = () => {
-  const location = useLocation();
+  const history = useHistory();
   const dispatch = useDispatch();
 
-  const planetNum = location.pathname.substr(-2);
+  const planetNum = history.location.pathname.substr(15);
   const currentPlanet = useSelector((state) => state.currentPlanet);
 
   useEffect(() => {
     dispatch(getCurrentPlanet(planetNum));
-  }, [dispatch]);
+  }, [dispatch, planetNum]);
+
+  const returnToList = () => {
+    history.push({
+      pathname: history.location.pathname.substr(0, 7),
+    });
+  };
 
   return (
     <>
@@ -47,6 +54,9 @@ const EachPlanet = () => {
         </li>
       </ul>
       <img src={earth} alt="planet" className={styles.planet__info_image} />
+      <button onClick={returnToList} className={styles.return_button}>
+        <img src={arrow} alt="arrow" />
+      </button>
     </>
   );
 };
